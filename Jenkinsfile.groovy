@@ -12,5 +12,10 @@ pipeline {
                 '''
             }
         }
+        stage('Test') {
+            steps {
+                sh 'Placeholder for now but will use to test looping'
+            }
+        }
     }
 }
