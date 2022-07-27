@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 if [ -s ex1.txt ];
 then
    echo "File exists and is not empty"
@@ -23,3 +24,5 @@ def logChecker() {
 # to fail, 2 lines
 # def variable = sh (something....)
 #if variable == true (...)
+
+
