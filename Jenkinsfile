@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Pull source code from SCM') {
       steps {
-        sh 'echo \'Hello World\''
+        echo 'Hello this is pulling source code
       }
     }
 
@@ -18,6 +18,5 @@ pipeline {
         echo 'Code Coverage'
       }
     }
-
   }
 }
