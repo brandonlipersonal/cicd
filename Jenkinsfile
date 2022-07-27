@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Pull source code from SCM') {
       steps {
-        echo 'Hello this is pulling source code
+        echo 'Hello this is pulling source code"
       }
     }
 

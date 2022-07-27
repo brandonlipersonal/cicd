@@ -1,22 +1,25 @@
-echo "Hello this is Brandon's file"
-echo "I just made some changes 7/26"
-
-#file --mime-type * -F$'\t' | awk -F'\t *' '$2 ~/^text\/plain/ { print $1 }'
-# file --mime-type * -F$'\t' = Determines file type of each file in the current folder (*) and prints two-column list (file name ---- MIME type)
-# awk -F'\t *' '$2 ~/^text\/plain/ { print $1 }' = Parses each line into filename and MIME type
-
-#if [[ $(file -b --mime-type "$file") == 'text/plain'* ]]
-#then
-#    echo "Found log file"
-#else
-#    echo "Not found"
-#fi
-
-# -f return true if file exists and regular file
-
-if [ -f ex1.txt ];
+if [ -s ex1.txt ];
 then
-    echo "File exists"
+   echo "File exists and is not empty"
 else
-    echo "File does not exist"
+   echo "File does not exist or is null, the pipeline will now stop..."
+   logChecker()
 fi
+
+
+
+def logChecker() {
+  Stage('Files have been checked and they are null or missing') {
+    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+      sh "exit 1"
+  }
+  echo "Must be a valid file"
+  }
+}
+
+#Variable (Deathchecker to run sh block)
+# check if it runs true or not
+# -s should return a value
+# to fail, 2 lines
+# def variable = sh (something....)
+#if variable == true (...)
