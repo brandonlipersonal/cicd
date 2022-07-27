@@ -44,12 +44,6 @@ pipeline {
                      echo "Multiline shell steps works too"
              }
          }      
-        
-        stage('Upload to AWS') {
-              steps {
-                  s3Upload(file:'HelloWorld.py', bucket:'shred-jenkins-test', path:'jenkins-aws-upload/HelloWorld.py')
-                  }
-              }
-         }
+    }
 }
 
