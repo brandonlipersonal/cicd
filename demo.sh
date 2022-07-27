@@ -14,9 +14,29 @@ echo "I just made some changes 7/26"
 
 # -f return true if file exists and regular file
 
+# Output whether it has content or not
+# Check to make sure there is contents inside the file
+# Fail and exit pipeline if there is no content
+# File exists and not 0 bytes
+# Change console log to change log
+
 if [ -f ex1.txt ];
 then
-    echo "File exists"
+   echo "File exists"
 else
-    echo "File does not exist"
+   echo "File does not exist"
 fi
+
+
+# sh """  
+#       if ( [-f 'ex1.txt'] && ['ex1.txt' != "NULL"] )
+#     then
+#         echo "File exists"
+#     elif [ 'ex1.txt' == "NULL"]
+#     then
+#        echo 'File is empty'
+       
+#     else
+#         echo "File does not exist"
+#     fi
+#   """
