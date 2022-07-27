@@ -1,21 +1,11 @@
-Jenkinsfile (Declarative Pipeline)
 pipeline {
-    agent { docker { image 'node:16.13.1-alpine' } }
-    stages {
-        stage('Build') {
-            steps {
-                sh 'node --version'
-                sh 'echo "Hello World"'
-                sh '''
-                    echo "Multiline shell works too"
-                    ls -lah
-                '''
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'Placeholder for now but will use to test looping'
-            }
-        }
+    agent { docker { image 'maven:3.3.3' } }
+      stages {
+        stage('log version info') {
+      steps {
+        sh 'mvn --version'
+        sh 'mvn clean install'
+      }
     }
+  }
 }
