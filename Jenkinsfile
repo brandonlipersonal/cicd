@@ -10,7 +10,7 @@ pipeline {
     stage('Build and Compile') {
       steps {
         echo 'Compiling...'
-        git >> git log
+        git >> git.log
         echo git
       }
     }
