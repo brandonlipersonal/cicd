@@ -10,7 +10,7 @@ pipeline {
                 },
                 two: {
                     // build 'sample3'
-                    build job: "./*", wait: true
+                    build job: *, wait: true
                     echo 'Both projects have been built'
                 }
                 )
