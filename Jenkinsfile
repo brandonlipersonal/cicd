@@ -7,10 +7,10 @@ pipeline {
             parallel(one: {
                     echo 'Start building other pipeline'
                     build 'sample2'
-                    build 'job'
                 },
                 two: {
-                    build 'sample3'
+                    // build 'sample3'
+                    build job: "./*", wait: true
                     echo 'Both projects have been built'
                 }
                 )
@@ -18,7 +18,10 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo 'Test will now begin'   
+                echo 'Test will now begin'
+                // script {
+                //     build job: "/"
+                // }   
             }
         }     
     }
