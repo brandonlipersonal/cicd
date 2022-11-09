@@ -9,8 +9,7 @@ pipeline {
                     build 'sample2'
                 },
                 two: {
-                    // build 'sample3'
-                    build job: *, wait: true
+                    build 'sample3'
                     echo 'Both projects have been built'
                 }
                 )
@@ -19,9 +18,6 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Test will now begin'
-                // script {
-                //     build job: "/"
-                // }   
             }
         }     
     }
