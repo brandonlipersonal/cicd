@@ -11,14 +11,15 @@ pipeline {
                 two: {
                     build 'sample3'
                     echo 'Both projects have been built'
-                },
-                three: {
-                    echo 'Listing out all jobs in jenkins'
-                    getAllItems()
-                })
-
+                }
+                )
             }
         }
+        stage('Test') {
+            steps {
+                echo "${getAllItems()}"
+            }
+        }     
     }
 }
 
