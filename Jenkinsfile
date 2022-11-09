@@ -17,15 +17,20 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo "${getAllItems()}"
+                // echo "${getAllItems()}"
+                def getAllItems() {
+                    Jenkins.instance.getAllItems(AbstractItem.class).each {
+                        println it.fullName + " - " + it.class
+                }
+                }
             }
         }     
     }
 }
 
-def getAllItems() {
-    Jenkins.instance.getAllItems(AbstractItem.class).each {
-        println it.fullName + " - " + it.class
-}
+// def getAllItems() {
+//     Jenkins.instance.getAllItems(AbstractItem.class).each {
+//         println it.fullName + " - " + it.class
+// }
 
-};
+// };
