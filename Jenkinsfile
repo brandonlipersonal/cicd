@@ -4,9 +4,15 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Start building other pipeline'
-                build 'sample2'
-                build 'sample3'
+            parallel(one: {
+                    echo 'Start building other pipeline'
+                    build 'sample2'
+                },
+                two: {
+                    build 'sample3'
+                    echo 'Both projects have been built'
+                })
+
             }
         }
     }
