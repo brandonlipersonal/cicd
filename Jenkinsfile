@@ -30,3 +30,5 @@ pipeline {
 
 // };
 
+def job = Hudson.instance.getAllItems(hudson.model.Job.class)
+    println(job.fullName)
