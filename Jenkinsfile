@@ -7,6 +7,7 @@ pipeline {
             parallel(one: {
                     echo 'Start building other pipeline'
                     build 'sample2'
+                    build 'job'
                 },
                 two: {
                     build 'sample3'
