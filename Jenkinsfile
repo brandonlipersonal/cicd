@@ -24,8 +24,7 @@ pipeline {
 
 def getAllItems() {
     Jenkins.instance.getAllItems(AbstractItem.class).each {
-//        println it.fullName + " - " + it.class
-        return println it.fullName + " - " + it.class
+        println it.fullName + " - " + it.class
 }
 
 };
