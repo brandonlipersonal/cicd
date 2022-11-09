@@ -1,32 +1,13 @@
-
 pipeline {
     agent any
 
     stages {
-        stage('Pull source code from SCM') {
+        stage('Build') {
             steps {
-                echo 'Hello World'
-            }
-        }  
-        stage('Build/Compile and Unit Test') {
-            steps {
-                echo 'Build'
-            }
-        }        
-        stage('Code Coverage') {
-            steps {
-                echo 'Code Coverage'
-            }
-        }        
-        stage('Quality Scan') {
-            steps {
-                echo 'Quality Scan'
-            }
-        }        
-        stage('Security Scan') {
-            steps {
-                echo 'Security Scan'
+                echo 'Start building other pipeline'
+                build 'sample2'
+                build 'sample3'
             }
         }
-  }
+    }
 }
