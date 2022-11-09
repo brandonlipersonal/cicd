@@ -17,11 +17,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo 'Test will now begin'
-                node {
-                    def bulkDeploy = load("bulkDeploy.groovy")
-                        echo '${bulkDeploy}'
-                }   
+                echo 'Test will now begin'   
             }
         }     
     }
