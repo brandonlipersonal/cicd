@@ -10,24 +10,24 @@ node {
     def jobName = jobs.findAll{ it.startsWith(jobFam)}
         println(jobName)
 
-    WorkflowJob job = Jenkins.instance.getItemByFullName( '/main-folder' )
-    RunList runList = job.getBuilds()
+    WorkflowJob job1 = Jenkins.instance.getItemByFullName( '/main-folder' )
+    RunList runList = job1.getBuilds()
     println """
-                  all builds : ${job.getBuildsAsMap().collect{ k, v -> k }}
-                build exists : ${job.getBuilds().collect { it.id }.contains( 25.toString() )}
+                  all builds : ${job1.getBuildsAsMap().collect{ k, v -> k }}
+                build exists : ${job1.getBuilds().collect { it.id }.contains( 25.toString() )}
 
              completedOnly() : ${runList.completedOnly().collect{ it.id }}
                failureOnly() : ${runList.failureOnly().collect{ it.id }}
               getLastBuild() : ${runList.getLastBuild()}
              getFirstBuild() : ${runList.getFirstBuild()}
 
-     getLastCompletedBuild() : ${job.getLastCompletedBuild()}
-        getLastFailedBuild() : ${job.getLastFailedBuild()}
-        getLastStableBuild() : ${job.getLastStableBuild()}
-    getLastSuccessfulBuild() : ${job.getLastSuccessfulBuild()}
-      getLastUnstableBuild() : ${job.getLastUnstableBuild()}
-  getLastUnsuccessfulBuild() : ${job.getLastUnsuccessfulBuild()}
-                 isInQueue() : ${job.isInQueue()}
+     getLastCompletedBuild() : ${job1.getLastCompletedBuild()}
+        getLastFailedBuild() : ${job1.getLastFailedBuild()}
+        getLastStableBuild() : ${job1.getLastStableBuild()}
+    getLastSuccessfulBuild() : ${job1.getLastSuccessfulBuild()}
+      getLastUnstableBuild() : ${job1.getLastUnstableBuild()}
+  getLastUnsuccessfulBuild() : ${job1.getLastUnsuccessfulBuild()}
+                 isInQueue() : ${job1.isInQueue()}
            getActions.causes : ${runList.collect{ run -> run.id + ': ' + run.getActions( jenkins.model.InterruptedBuildAction.class ).causes.flatten().collect{ it.class.simpleName } }}
 """
 
