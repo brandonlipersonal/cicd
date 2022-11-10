@@ -15,15 +15,15 @@ node {
 }
 def setJobList () {
     node {
-    if (envJobList == "null") {
-        envJobList="DSIT,PTE,SAT,PSU,END"
-        println("No value provided, dropdown is: ${envJobList}")
-    }
-    stage('Display Dropdown') {
-        tempList = envJobList
-        println("Job list value is: ${tempList}")
+        stage('Display Dropdown') {
+            if (envJobList == "null") {
+                envJobList="DSIT,PTE,SAT,PSU,END"
+                println("No value provided, dropdown is: ${envJobList}")
+            }
+            tempList = envJobList
+            println("Job list value is: ${tempList}")
 
-    }
+        }
     }
 }
 
