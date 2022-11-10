@@ -1,6 +1,6 @@
 def jobFam = "sample"
 node {
-    list = ["sample2.CICD", "sample3.CICD"]
+    // list = ["sample2.CICD", "sample3.CICD"]
     def job = Hudson.instance.getAllItems(hudson.model.Job.class)
     def jobs = job.fullName
         println(jobs)
@@ -16,6 +16,9 @@ node {
 
 // extract path to job 
 // dropdown to select name
+stage('jobSelect') {
+    tempList = 
+}
 // create list for a folder contents
 // Only .CICD for multiselect dropdown
 // sample .CICD and .CICD.RTC
