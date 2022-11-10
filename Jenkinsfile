@@ -12,6 +12,9 @@ node {
             echo name
         }
     }
+}
+def setJobList () {
+    node {
     if (envJobList == "null") {
         envJobList="DSIT,PTE,SAT,PSU,END"
         println("No value provided, dropdown is: ${envJobList}")
@@ -21,7 +24,9 @@ node {
         println("Job list value is: ${tempList}")
 
     }
+    }
 }
+
 
 // extract path to job 
 // dropdown to select name
