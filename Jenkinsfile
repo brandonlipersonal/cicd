@@ -1,6 +1,5 @@
-pipeline {
+pipeline    
     agent any
-
     stages {
         // stage('Build') {
         //     steps {
@@ -43,23 +42,21 @@ pipeline {
     //     stage('Test start all Stages') {
     //         for ( name in jobName){
     //             build job: name, wait: false
-
-
 def jobFam = "sample"
-
-list = ["sample2", "sample3"]
-def job = Hudson.instance.getAllItems(hudson.model.Job.class)
-def jobs = job.fullName
-    println(jobs)
-def jobName = jobs.findAll{ it.startsWith(jobFam)}
-    println(jobName)
-stage('Test start all Stages') {
-    for ( name in jobName){
-        // build job: name, wait: false
-        echo name
+node {
+    list = ["sample2", "sample3"]
+    def job = Hudson.instance.getAllItems(hudson.model.Job.class)
+    def jobs = job.fullName
+        println(jobs)
+    def jobName = jobs.findAll{ it.startsWith(jobFam)}
+        println(jobName)
+    stage('Test start all Stages') {
+        for ( name in jobName){
+            // build job: name, wait: false
+            echo name
+        }
     }
+}
 }
 // extract path to job 
 // dropdown to select name
-}
-}
