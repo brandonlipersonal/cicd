@@ -1,6 +1,6 @@
 def jobFam = ""
 node{
-    list = ["Jenkins Test 2", "Jenkins Test 3"]
+
     def job = Hudson.instance.getAllItems(hudson.model.Job.class)
     def jobs = job.fullName.findAll{ it.startsWith(env.deployFolder)}
     println(jobs)
