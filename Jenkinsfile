@@ -9,49 +9,20 @@ node {
         println(jobs)
     def jobName = jobs.findAll{ it.startsWith(jobFam)}
         println(jobName)
-    
-    def multiSelect= new ExtendedChoiceParameterDefinition("name",
-                "PT_MULTI_SELECT",
-                "blue,green,yellow,blue",
-                "project name",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "blue,green,yellow,blue",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                false,
-                false,
-                3,
-                "multiselect",
-                ",")
-
-    def userInput = input  id: 'customID', message: 'Let\'s promote?', ok: 'Release!', parameters:  [multiSelect]
-
-
-    echo "Hello: "+ userInput
-
     stage('Test start all Stages') {
         for ( name in jobName){
             build job: name, wait: false
             echo name
         }
+    }
+    if (envJobList == "null") {
+        envJobList="DSIT,PTE,SAT,PSU,END"
+        println("No value provided, dropdown is: ${envJobList}")
+    }
+    stage('Display Dropdown') {
+        tempList = envJobList
+        println("Job list value is: ${tempList}")
+
     }
 }
 
