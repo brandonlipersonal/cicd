@@ -1,6 +1,3 @@
-import com.cwctravel.hudson.plugins.extended_choice_parameter.ExtendedChoiceParameterDefinition
-
-
 def jobFam = "sample"
 node {
     // list = ["sample2.CICD", "sample3.CICD"]
