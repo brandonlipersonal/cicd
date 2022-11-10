@@ -1,6 +1,3 @@
-pipeline    
-    agent any
-    stages {
         // stage('Build') {
         //     steps {
         //     parallel(one: {
@@ -57,6 +54,6 @@ node {
         }
     }
 }
-}
+
 // extract path to job 
 // dropdown to select name
