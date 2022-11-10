@@ -1,5 +1,5 @@
-import org.jenkinsci.plugins.workflow.job.WorkflowJob
-import hudson.util.RunList
+import com.cwctravel.hudson.plugins.extended_choice_parameter.ExtendedChoiceParameterDefinition
+
 
 def jobFam = "sample"
 node {
@@ -9,28 +9,43 @@ node {
         println(jobs)
     def jobName = jobs.findAll{ it.startsWith(jobFam)}
         println(jobName)
+    
+    def multiSelect= new ExtendedChoiceParameterDefinition("name",
+                "PT_MULTI_SELECT",
+                "blue,green,yellow,blue",
+                "project name",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "blue,green,yellow,blue",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                false,
+                false,
+                3,
+                "multiselect",
+                ",")
 
-    WorkflowJob job1 = Jenkins.instance.getItemByFullName( '/main-folder' )
-    RunList runList = job1.getBuilds()
-    println """
-                  all builds : ${job1.getBuildsAsMap().collect{ k, v -> k }}
-                build exists : ${job1.getBuilds().collect { it.id }.contains( 25.toString() )}
+    def userInput = input  id: 'customID', message: 'Let\'s promote?', ok: 'Release!', parameters:  [multiSelect]
 
-             completedOnly() : ${runList.completedOnly().collect{ it.id }}
-               failureOnly() : ${runList.failureOnly().collect{ it.id }}
-              getLastBuild() : ${runList.getLastBuild()}
-             getFirstBuild() : ${runList.getFirstBuild()}
 
-     getLastCompletedBuild() : ${job1.getLastCompletedBuild()}
-        getLastFailedBuild() : ${job1.getLastFailedBuild()}
-        getLastStableBuild() : ${job1.getLastStableBuild()}
-    getLastSuccessfulBuild() : ${job1.getLastSuccessfulBuild()}
-      getLastUnstableBuild() : ${job1.getLastUnstableBuild()}
-  getLastUnsuccessfulBuild() : ${job1.getLastUnsuccessfulBuild()}
-                 isInQueue() : ${job1.isInQueue()}
-           getActions.causes : ${runList.collect{ run -> run.id + ': ' + run.getActions( jenkins.model.InterruptedBuildAction.class ).causes.flatten().collect{ it.class.simpleName } }}
-"""
-
+    echo "Hello: "+ userInput
 
     stage('Test start all Stages') {
         for ( name in jobName){
