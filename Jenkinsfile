@@ -22,3 +22,26 @@ node {
 // create list for a folder contents
 // Only .CICD for multiselect dropdown
 // sample .CICD and .CICD.RTC
+
+node {
+    WorkflowJob job = Jenkins.instance.getItemByFullName( '/main-folder' )
+    RunList runList = job.getBuilds()
+    println """
+                  all builds : ${job.getBuildsAsMap().collect{ k, v -> k }}
+                build exists : ${job.getBuilds().collect { it.id }.contains( 25.toString() )}
+
+             completedOnly() : ${runList.completedOnly().collect{ it.id }}
+               failureOnly() : ${runList.failureOnly().collect{ it.id }}
+              getLastBuild() : ${runList.getLastBuild()}
+             getFirstBuild() : ${runList.getFirstBuild()}
+
+     getLastCompletedBuild() : ${job.getLastCompletedBuild()}
+        getLastFailedBuild() : ${job.getLastFailedBuild()}
+        getLastStableBuild() : ${job.getLastStableBuild()}
+    getLastSuccessfulBuild() : ${job.getLastSuccessfulBuild()}
+      getLastUnstableBuild() : ${job.getLastUnstableBuild()}
+  getLastUnsuccessfulBuild() : ${job.getLastUnsuccessfulBuild()}
+                 isInQueue() : ${job.isInQueue()}
+           getActions.causes : ${runList.collect{ run -> run.id + ': ' + run.getActions( jenkins.model.InterruptedBuildAction.class ).causes.flatten().collect{ it.class.simpleName } }}
+"""
+}
