@@ -46,7 +46,7 @@ pipeline {
     //             build job: name, wait: false
 
 
-def jobFam = "Jenkins"
+def jobFam = "sample"
 
 list = ["sample2", "sample3"]
 def job = Hudson.instance.getAllItems(hudson.model.Job.class)
