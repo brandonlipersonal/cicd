@@ -1,4 +1,4 @@
-def jobFam = ".CICD"
+def jobFam = "sample"
 node {
     list = ["sample2.CICD", "sample3.CICD"]
     def job = Hudson.instance.getAllItems(hudson.model.Job.class)
