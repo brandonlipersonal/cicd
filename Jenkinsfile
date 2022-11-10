@@ -15,7 +15,11 @@ pipeline {
                 )
             }
         }
-
+        stage('Test start all Stages') {
+            for ( name in jobName){
+                build job: name, wait: false
+            }
+        }
         // stage('Test') {
         //     steps {
         //         echo 'Test will now begin'  
@@ -41,9 +45,9 @@ pipeline {
             println(jobs)
         def jobName = jobs.findAll{ it.startsWith(jobFam)}
             println(jobName)
-        stage('Test start all Stages') {
-            for ( name in jobName){
-                build job: name, wait: false
-            }
-        }
+        // stage('Test start all Stages') {
+        //     for ( name in jobName){
+        //         build job: name, wait: false
+        //     }
+        // }
     }
