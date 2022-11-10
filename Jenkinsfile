@@ -18,8 +18,7 @@ pipeline {
         // stage('Test') {
         //     steps {
         //         echo 'Test will now begin'  
-    }
-}
+
 
 // def getAllItems() {
 //     Jenkins.instance.getAllItems(AbstractItem.class).each {
@@ -62,3 +61,4 @@ stage('Test start all Stages') {
 }
 // extract path to job 
 // dropdown to select name
+}
