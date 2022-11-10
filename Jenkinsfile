@@ -1,3 +1,6 @@
+import org.jenkinsci.plugins.workflow.job.WorkflowJob
+import hudson.util.RunList
+
 def jobFam = "sample"
 node {
     // list = ["sample2.CICD", "sample3.CICD"]
@@ -16,9 +19,7 @@ node {
 
 // extract path to job 
 // dropdown to select name
-// stage('jobSelect') {
-//     tempList = 
-// }
+// Try using choice parameter
 // create list for a folder contents
 // Only .CICD for multiselect dropdown
 // sample .CICD and .CICD.RTC
