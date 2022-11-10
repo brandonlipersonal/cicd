@@ -16,9 +16,9 @@ node {
 
 // extract path to job 
 // dropdown to select name
-stage('jobSelect') {
-    tempList = 
-}
+// stage('jobSelect') {
+//     tempList = 
+// }
 // create list for a folder contents
 // Only .CICD for multiselect dropdown
 // sample .CICD and .CICD.RTC
