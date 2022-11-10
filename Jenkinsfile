@@ -49,7 +49,7 @@ node {
         println(jobName)
     stage('Test start all Stages') {
         for ( name in jobName){
-            // build job: name, wait: false
+            build job: name, wait: false
             echo name
         }
     }
