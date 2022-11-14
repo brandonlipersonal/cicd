@@ -1,7 +1,7 @@
 def jobFam = ""
 node{
     def job = Hudson.instance.getAllItems(hudson.model.Job.class)
-    def jobs = job.fullName.findAll{ it.startsWith(env)}
+    def jobs = job.fullName.findAll{ it.startsWith(env.deployFolder)}
     println(jobs)
     def jobName = jobs.findAll{ it.endsWith(".CICD")}
     println(jobName)
